@@ -10,6 +10,8 @@ const projects = [
     tech: ['React.js', 'TypeScript', 'Redux', 'Ant Design', 'REST API'],
     image: '💰',
     color: 'from-green-500 to-emerald-500',
+    github: null,
+    live: null,
   },
   {
     title: 'E-Learning Platform',
@@ -17,6 +19,8 @@ const projects = [
     tech: ['React.js', 'TypeScript', 'Tailwind CSS', 'JWT Auth'],
     image: '📚',
     color: 'from-blue-500 to-cyan-500',
+    github: null,
+    live: null,
   },
   {
     title: 'Food Delivery App',
@@ -24,14 +28,17 @@ const projects = [
     tech: ['React.js', 'Redux', 'Axios', 'Responsive Design'],
     image: '🍔',
     color: 'from-orange-500 to-red-500',
+    github: null,
+    live: null,
   },
   {
     title: 'YouTube Channel Branding',
     description: 'Complete visual identity design including thumbnails, banners, channel art, and video editing for gaming content creator.',
     tech: ['Photoshop', 'Illustrator', 'Premiere Pro'],
     image: '🎮',
-    liveLink: 'https://www.youtube.com/@Arabpati',
     color: 'from-purple-500 to-pink-500',
+    github: null,
+    live: 'https://www.youtube.com/@Arabpati',
   },
 ]
 
@@ -75,18 +82,28 @@ export default function Projects() {
                   <div className="flex items-center justify-between mb-3">
                     <h3 className="text-xl font-bold">{project.title}</h3>
                     <div className="flex gap-3">
-                      <motion.button
-                        whileHover={{ scale: 1.1 }}
-                        className="text-gray-400 hover:text-primary transition-colors"
-                      >
-                        <FaGithub className="text-xl" />
-                      </motion.button>
-                      <motion.button
-                        whileHover={{ scale: 1.1 }}
-                        className="text-gray-400 hover:text-primary transition-colors"
-                      >
-                        <FaExternalLinkAlt className="text-lg" />
-                      </motion.button>
+                      {project.github && (
+                        <motion.a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          whileHover={{ scale: 1.1 }}
+                          className="text-gray-400 hover:text-primary transition-colors"
+                        >
+                          <FaGithub className="text-xl" />
+                        </motion.a>
+                      )}
+                      {project.live && (
+                        <motion.a
+                          href={project.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          whileHover={{ scale: 1.1 }}
+                          className="text-gray-400 hover:text-primary transition-colors"
+                        >
+                          <FaExternalLinkAlt className="text-lg" />
+                        </motion.a>
+                      )}
                     </div>
                   </div>
 
