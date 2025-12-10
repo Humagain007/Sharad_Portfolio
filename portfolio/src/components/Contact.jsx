@@ -8,10 +8,9 @@ const contactInfo = [
   { icon: FaEnvelope, label: 'Email', value: 'sharadhumagain@gmail.com', href: 'mailto:sharadhumagain@gmail.com' },
   { icon: FaPhone, label: 'Phone', value: '+32 465 560 211', href: 'tel:+32465560211' },
   { icon: FaMapMarkerAlt, label: 'Location', value: 'Belgium', href: null },
-  { icon: FaLinkedin, label: 'LinkedIn', value: 'sharad-humagain', href: 'https://linkedin.com/in/sharad-humagain-401ba61a0' },
+  { icon: FaLinkedin, label: 'LinkedIn', value: 'Connect on LinkedIn', href: 'https://linkedin.com/in/sharad-humagain-401ba61a0' },
 ]
 
-// TODO: Replace these with your EmailJS credentials
 const EMAILJS_SERVICE_ID = 'service_za2rpmd'
 const EMAILJS_TEMPLATE_ID = 'template_xf7k4bl'
 const EMAILJS_PUBLIC_KEY = 'GkFeHLkGb8IJf2Zvi'
@@ -46,118 +45,130 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-20 sm:py-32">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-24 sm:py-32 relative">
+      {/* Background */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#7B5CFF]/5 rounded-full blur-[120px]" />
+      </div>
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-4">
-            Get In <span className="gradient-text">Touch</span>
-          </h2>
-          <p className="text-gray-400 text-center mb-16 max-w-2xl mx-auto">
-            Have a project in mind? Let's work together!
-          </p>
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : {}}
+              transition={{ delay: 0.1 }}
+              className="text-[#7B5CFF] font-medium mb-4 tracking-wide uppercase text-sm"
+            >
+              Contact
+            </motion.p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-4">
+              Get in <span className="gradient-text">Touch</span>
+            </h2>
+            <p className="text-[#A1A1AA] max-w-xl mx-auto">
+              Feel free to reach out — I'm always happy to discuss opportunities or interesting ideas.
+            </p>
+          </div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-5 gap-12">
             {/* Contact Info */}
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
+              initial={{ opacity: 0, x: -30 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ delay: 0.2, duration: 0.8 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="lg:col-span-2 space-y-4"
             >
-              <h3 className="text-2xl font-bold mb-6">Let's talk about everything!</h3>
-              <p className="text-gray-400 mb-8">
-                I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Feel free to reach out!
-              </p>
+              <h3 className="text-xl font-semibold text-white mb-6">Let's connect</h3>
 
-              <div className="space-y-4">
-                {contactInfo.map((info, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={isInView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ delay: 0.3 + index * 0.1, duration: 0.5 }}
-                  >
-                    {info.href ? (
-                      <a
-                        href={info.href}
-                        target={info.href.startsWith('http') ? '_blank' : undefined}
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-4 glass p-4 rounded-xl hover:bg-white/10 transition-all group"
-                      >
-                        <div className="p-3 bg-primary/20 rounded-xl group-hover:bg-primary/30 transition-colors">
-                          <info.icon className="text-primary text-xl" />
-                        </div>
-                        <div>
-                          <p className="text-sm text-gray-400">{info.label}</p>
-                          <p className="font-medium">{info.value}</p>
-                        </div>
-                      </a>
-                    ) : (
-                      <div className="flex items-center gap-4 glass p-4 rounded-xl">
-                        <div className="p-3 bg-primary/20 rounded-xl">
-                          <info.icon className="text-primary text-xl" />
-                        </div>
-                        <div>
-                          <p className="text-sm text-gray-400">{info.label}</p>
-                          <p className="font-medium">{info.value}</p>
-                        </div>
+              {contactInfo.map((info, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.3 + index * 0.1, duration: 0.5 }}
+                >
+                  {info.href ? (
+                    <a
+                      href={info.href}
+                      target={info.href.startsWith('http') ? '_blank' : undefined}
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-4 glass p-4 rounded-xl hover:bg-white/5 hover:border-[#7B5CFF]/20 transition-all group"
+                    >
+                      <div className="p-3 bg-[#7B5CFF]/15 rounded-lg group-hover:bg-[#7B5CFF]/25 transition-colors">
+                        <info.icon className="text-[#7B5CFF] text-lg" />
                       </div>
-                    )}
-                  </motion.div>
-                ))}
-              </div>
+                      <div>
+                        <p className="text-xs text-[#71717A] mb-0.5">{info.label}</p>
+                        <p className="text-sm font-medium text-white">{info.value}</p>
+                      </div>
+                    </a>
+                  ) : (
+                    <div className="flex items-center gap-4 glass p-4 rounded-xl">
+                      <div className="p-3 bg-[#7B5CFF]/15 rounded-lg">
+                        <info.icon className="text-[#7B5CFF] text-lg" />
+                      </div>
+                      <div>
+                        <p className="text-xs text-[#71717A] mb-0.5">{info.label}</p>
+                        <p className="text-sm font-medium text-white">{info.value}</p>
+                      </div>
+                    </div>
+                  )}
+                </motion.div>
+              ))}
             </motion.div>
 
             {/* Contact Form */}
             <motion.form
               ref={formRef}
               onSubmit={handleSubmit}
-              initial={{ opacity: 0, x: 50 }}
+              initial={{ opacity: 0, x: 30 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ delay: 0.4, duration: 0.8 }}
-              className="glass p-8 rounded-2xl"
+              transition={{ delay: 0.4, duration: 0.6 }}
+              className="lg:col-span-3 glass p-8 rounded-2xl"
             >
               <div className="space-y-6">
                 <div>
-                  <label className="block text-sm text-gray-400 mb-2">Your Name</label>
+                  <label className="block text-sm text-[#A1A1AA] mb-2 font-medium">Name</label>
                   <input
                     type="text"
                     name="name"
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:border-primary focus:outline-none transition-colors"
-                    placeholder="John Doe"
+                    className="w-full px-4 py-3.5 bg-[#1A1A1A] border border-white/10 rounded-xl text-white placeholder:text-[#71717A] focus:border-[#7B5CFF] focus:ring-2 focus:ring-[#7B5CFF]/20 focus:outline-none transition-all"
+                    placeholder="Your name"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm text-gray-400 mb-2">Your Email</label>
+                  <label className="block text-sm text-[#A1A1AA] mb-2 font-medium">Email</label>
                   <input
                     type="email"
                     name="email"
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:border-primary focus:outline-none transition-colors"
-                    placeholder="john@example.com"
+                    className="w-full px-4 py-3.5 bg-[#1A1A1A] border border-white/10 rounded-xl text-white placeholder:text-[#71717A] focus:border-[#7B5CFF] focus:ring-2 focus:ring-[#7B5CFF]/20 focus:outline-none transition-all"
+                    placeholder="your@email.com"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm text-gray-400 mb-2">Message</label>
+                  <label className="block text-sm text-[#A1A1AA] mb-2 font-medium">Message</label>
                   <textarea
                     name="title"
                     required
                     rows={5}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:border-primary focus:outline-none transition-colors resize-none"
-                    placeholder="Tell me about your project..."
+                    className="w-full px-4 py-3.5 bg-[#1A1A1A] border border-white/10 rounded-xl text-white placeholder:text-[#71717A] focus:border-[#7B5CFF] focus:ring-2 focus:ring-[#7B5CFF]/20 focus:outline-none transition-all resize-none"
+                    placeholder="Tell me about your project or opportunity..."
                   />
                 </div>
 
@@ -165,11 +176,10 @@ export default function Contact() {
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className={`p-4 rounded-xl ${
-                      status.type === 'success' 
-                        ? 'bg-green-500/20 text-green-400 border border-green-500/30' 
-                        : 'bg-red-500/20 text-red-400 border border-red-500/30'
-                    }`}
+                    className={`p-4 rounded-xl text-sm ${status.type === 'success'
+                        ? 'bg-green-500/10 text-green-400 border border-green-500/20'
+                        : 'bg-red-500/10 text-red-400 border border-red-500/20'
+                      }`}
                   >
                     {status.message}
                   </motion.div>
@@ -178,11 +188,10 @@ export default function Contact() {
                 <motion.button
                   type="submit"
                   disabled={isLoading}
-                  whileHover={{ scale: isLoading ? 1 : 1.02 }}
-                  whileTap={{ scale: isLoading ? 1 : 0.98 }}
-                  className={`w-full py-4 bg-gradient-to-r from-primary to-secondary rounded-xl font-medium transition-opacity ${
-                    isLoading ? 'opacity-70 cursor-not-allowed' : 'hover:opacity-90'
-                  }`}
+                  whileHover={{ scale: isLoading ? 1 : 1.01 }}
+                  whileTap={{ scale: isLoading ? 1 : 0.99 }}
+                  className={`w-full py-4 bg-gradient-to-r from-[#7B5CFF] to-[#4A3CFF] rounded-xl font-medium text-white transition-all ${isLoading ? 'opacity-70 cursor-not-allowed' : 'hover:shadow-lg hover:shadow-[#7B5CFF]/25'
+                    }`}
                 >
                   {isLoading ? (
                     <span className="flex items-center justify-center gap-2">
