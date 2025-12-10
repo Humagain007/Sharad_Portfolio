@@ -30,6 +30,7 @@ const projects = [
     description: 'Complete visual identity design including thumbnails, banners, channel art, and video editing for gaming content creator.',
     tech: ['Photoshop', 'Illustrator', 'Premiere Pro'],
     image: '🎮',
+    liveLink: 'https://www.youtube.com/@Arabpati',
     color: 'from-purple-500 to-pink-500',
   },
 ]
